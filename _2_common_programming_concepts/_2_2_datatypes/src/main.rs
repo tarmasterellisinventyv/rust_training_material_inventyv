@@ -186,10 +186,12 @@ fn main() {
 	let c: [i32; 5] = [1, 2, 3, 4, 5];
 	println!("The value of c is: {:?}", c);
 
-	let mut d: [i32; 5] = [1, 2, 3, 4, 5];
+	let d: [i32; 5] = [1, 2, 3, 4, 5];	
 	println!("The value of d is: {:?}", d);
-	d[0] = 10;
-	println!("The value of d is: {:?}", d);
+	let mut new_array = [0; 6];
+	new_array[..5].copy_from_slice(&d);
+	new_array[5] = 6;
+	println!("The value of new_array is: {:?}", new_array);
 
 	// tuples
 	let d: (i32, f64, bool) = (1, 3.14, true);

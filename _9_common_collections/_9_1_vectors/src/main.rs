@@ -22,13 +22,13 @@ fn main() {
 		println!("Number: {}", num);
 	}
 
-	let mut vector: Vec<i32> = Vec::new();  // Vector to hold integers
+	let vector: Vec<i32> = Vec::new();  // Vector to hold integers
 	println!("Vector: {:?}", vector);
 
 	let vector_initial = vec![1, 2, 3, 4, 5];  // Vector with predefined integer values
 	println!("Vector: {:?}", vector_initial);
 
-	let mut vector_capacity: Vec<i32> = Vec::with_capacity(10);  // Pre-allocate space for 10 elements
+	let vector_capacity: Vec<i32> = Vec::with_capacity(10);  // Pre-allocate space for 10 elements
 	println!("Vector: {:?}", vector_capacity);
 
 	// Accessing Vector Elements
@@ -42,17 +42,21 @@ fn main() {
 
 	// Different Types of Vectors
 	let integers: Vec<i32> = vec![1, 2, 3, 4];
+	println!("{:?}", integers);
 
 	let strings: Vec<String> = vec![
 		String::from("Hello"),
 		String::from("World"),
 	];
+	println!("{:?}", strings);
 
 	let tuples: Vec<(i32, char)> = vec![
 		(1, 'a'),
 		(2, 'b'),
 	];
+	println!("{:?}", tuples);
 
+	#[derive(Debug)]
 	struct Person {
 		name: String,
 		age: u32,
@@ -62,13 +66,17 @@ fn main() {
 		Person { name: String::from("Alice"), age: 30 },
 		Person { name: String::from("Bob"), age: 25 },
 	];
+	println!("{:?}", people);
 
+	#[derive(Debug)]
 	enum Fruit {
 		Apple,
 		Banana,
 		Orange,
 	}
-	let fruits: Vec<Fruit> = vec![Fruit::Apple, Fruit::Banana];
+	let fruits: Vec<Fruit> = vec![Fruit::Apple, Fruit::Banana, Fruit::Orange];
+
+	println!("{:?}", fruits);
 
 	// Example: Vector of Structs
 	struct Point {
