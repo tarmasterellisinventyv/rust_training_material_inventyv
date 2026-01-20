@@ -138,7 +138,7 @@ fn main() {
 	}
 
 	// for Loops
-	for i in 1..=5 {
+	for i in 1..=1000 {
 		println!("i: {}", i);
 	}
 
@@ -150,3 +150,5 @@ fn main() {
 		i += 1;
 	}
 }
+
+

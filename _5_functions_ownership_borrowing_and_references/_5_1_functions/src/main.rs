@@ -23,7 +23,7 @@ fn add(a: i32, b: i32) {
     println!("The sum of {} and {} is {}", a, b, a + b);
 }
 
-// Function With Return Type
+// // Function With Return Type
 fn add_with_return_type(a: i32, b: i32) -> i32 {
     a + b
 }

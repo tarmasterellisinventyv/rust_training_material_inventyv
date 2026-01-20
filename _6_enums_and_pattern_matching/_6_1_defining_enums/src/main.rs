@@ -1,88 +1,96 @@
 /*
-	Defining Enums
-		Enums are a way to define a type that can have a fixed set of values.
-		Enums are useful when you want to define a type that can have a fixed set of values.
-		Enums are also useful when you want to define a type that can have multiple types of values.
-		Enums are defined using the enum keyword.
-		Enums can be defined with a set of named variants, or unnamed variants.
-		Named variants are variants that have a name associated with them.
-		Unnamed variants are variants that don't have a name associated with them.
-		Enums can be defined with a set of variants, or a single variant.
-		Enums can be defined with a set of variants, or a single variant.
+    Defining Enums in Rust
 
-		Variants
-			Variants are the different values that an enum can have.
-			Variants are defined using the enum keyword.
-			Enums can be defined with a set of named variants, or unnamed variants.
-			Named variants are variants that have a name associated with them.
-			Unnamed variants are variants that don't have a name associated with them.
-			Enums can be defined with a set of variants, or a single variant.
-			Enums can be defined with a set of variants, or a single variant.
+    - Enums allow defining a type that can have a fixed set of values.
+    - Useful for defining multiple related types under a single structure.
+    - Variants can be simple, hold data, or reference other types.
+
+    Example:
+        - Basic Enums: `Color` and `Size` with fixed values.
+        - Complex Enums: `Message`, which can store different data types.
 */
 
 fn main() {
-	let x = Color::Red;  // x is of type Color
+    let x = Color::Red;
+    let y = Color::Blue;
+    let z = Color::Green;
 
-	let y = Color::Blue;  // y is of type Color
+    println!("{:?}", x);  // Red
+    println!("{:?}", y);  // Blue
+    println!("{:?}", z);  // Green
 
-	let z = Color::Green;  // z is of type Color
+    let x = Size::Small;
+    let y = Size::Medium;
+    let z = Size::Large;
 
-	println!("{:?}", x);  // Red
-	println!("{:?}", y);  // Blue
-	println!("{:?}", z);  // Green
+    println!("{:?}", x);  // Small
+    println!("{:?}", y);  // Medium
+    println!("{:?}", z);  // Large
 
-	let x = Size::Small;  // x is of type Size
+    let message = Message::Move { x: 5, y: 10 };
 
-	let y = Size::Medium;  // y is of type Size
+    // Using match instead of if let
+    match message {
+        Message::Move { x, y } => println!("Moving to coordinates: x: {}, y: {}", x, y),
+        _ => println!("{:?}", message),
+    }
 
-	let z = Size::Large;  // z is of type Size
+    let messages = [
+        Message::Quit,
+        Message::Write(String::from("Hello")),
+        Message::ChangeColor(Color::Red),
+        Message::ChangeSize(Size::Small),
+    ];
 
-	println!("{:?}", x);  // Small
-	println!("{:?}", y);  // Medium
-	println!("{:?}", z);  // Large
-
-	let x = Message::Quit;  // x is of type Message
-
-	let y = Message::Move { x: 5, y: 10 };  // y is of type Message
-
-	if let Message::Move { x, y } = x {
-		println!("Moving to coordinates: x: {}, y: {}", x, y);
-	}
-
-	let z = Message::Write(String::from("Hello"));  // z is of type Message
-
-	let a = Message::ChangeColor(Color::Red);  // a is of type Message
-
-	let b = Message::ChangeSize(Size::Small);  // b is of type Message
-
-	println!("{:?}", x);  // Quit
-	println!("{:?}", y);  // Move { x: 5, y: 10 }
-	println!("{:?}", z);  // Write("Hello")
-	println!("{:?}", a);  // ChangeColor(Red)
-	println!("{:?}", b);  // ChangeSize(Small)
-
+    for msg in messages.iter() {
+        msg.process();
+    }
 }
 
 #[derive(Debug)]
 enum Color {
-	Red,
-	Blue,
-	Green,
+    Red,
+    Blue,
+    Green,
 }
 
 #[derive(Debug)]
 enum Size {
-	Small,
-	Medium,
-	Large,
+    Small,
+    Medium,
+    Large,
 }
 
 #[derive(Debug)]
-#[allow(dead_code)]
 enum Message {
-	Quit,
-	Move { x: i32, y: i32 },
-	Write(String),
-	ChangeColor(Color),
-	ChangeSize(Size),
+    Quit,
+    Move { x: i32, y: i32 },
+    Write(String),
+    ChangeColor(Color),
+    ChangeSize(Size),
+}
+
+// Implementation block for Message
+impl Message {
+    fn process(&self) {
+        match self {
+            Message::Quit => println!("Quitting..."),
+            Message::Move { x, y } => println!("Moving to coordinates: x: {}, y: {}", x, y),
+            Message::Write(text) => self.write_message(text),
+            Message::ChangeColor(color) => self.change_color(color),
+            Message::ChangeSize(size) => self.change_size(size),
+        }
+    }
+
+    fn write_message(&self, text: &String) {
+        println!("Writing message: {}", text);
+    }
+
+    fn change_color(&self, color: &Color) {
+        println!("Changing color to {:?}", color);
+    }
+
+    fn change_size(&self, size: &Size) {
+        println!("Changing size to {:?}", size);
+    }
 }

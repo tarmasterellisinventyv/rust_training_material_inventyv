@@ -16,14 +16,14 @@ fn add(x: i32, y: i32) -> i32 {
 	x + y
 }
 
-/// This is a documentation comment for a module
+/// This is a documentation comment for a module Sosandfkjsdbgfhlbsdfm. v;ndf 
 mod my_module {
 	// This is a single-line comment
 
 	/* This is a
 	multi-line comment */
 
-	/// This is a documentation comment for a function
+	/// This is a documentation comment for a function jahsgdhkjasb;dkbsad;hbnk
 	pub fn add(x: i32, y: i32) -> i32 {
 		x + y
 	}

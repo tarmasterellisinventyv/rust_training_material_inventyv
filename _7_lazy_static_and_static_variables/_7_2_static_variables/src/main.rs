@@ -46,6 +46,7 @@ fn main() {
 	{
 		let mut counter = _COUNTER.lock().unwrap();
 		*counter += 1;
+		*counter += 1;
 		println!("Counter: {}", *counter);
 	}
 
@@ -55,11 +56,20 @@ fn main() {
 		println!("Counter: {}", *counter);
 	}
 
+	match _COUNTER.lock() {
+		Ok(counter) => println!("Counter: {}", *counter),
+		Err(e) => println!("Error: Mutex Lock Failed {}", e),
+		_ => panic!("Error: Mutex Lock Failed")
+	}
+
+	println!("Counter: {}", COUNTER_.load(Ordering::SeqCst));
+
 	// Using Atomic Types for Concurrent Access
 	COUNTER_.fetch_add(1, Ordering::SeqCst);
 	println!("Counter: {}", COUNTER_.load(Ordering::SeqCst));
 
 	COUNTER_.fetch_add(1, Ordering::SeqCst);
+	println!("Counter: {}", COUNTER_.load(Ordering::SeqCst));
 	println!("Counter: {}", COUNTER_.load(Ordering::SeqCst));
 
 }

@@ -140,40 +140,46 @@
 */
 
 fn main() {
-	// integers
-	let x: i32 = 5;
-	println!("The value of x is: {x}");
+	// // integers
+	// let x: i32 = 5;
+	// println!("The value of x is: {x}");
 	
-	let mut y: i32 = 5;
-	println!("The value of y is: {y}");
-	y = 10;
-	println!("The value of y is: {y}");
+	// let mut y: i32 = 5;
+	// println!("The value of y is: {y}");
+	// y = 10;
+	// println!("The value of y is: {y}");
 
-	let z: i32 = 5;
-	println!("The value of z is: {z}");
+	// let z: i32 = 5;
+	// println!("The value of z is: {z}");
 
-	// Floating-point numbers
-	let y: f64 = 3.14;
-	println!("The value of y is: {y}");
+	// // Floating-point numbers
+	// let y: f64 = 3.14;
+	// println!("The value of y is: {y}");
 
-	let mut z: f64 = 3.14;
-	println!("The value of z is: {z}");
-	z = 10.0;
-	println!("The value of z is: {z}");
+	// let mut z: f64 = 3.14;
+	// println!("The value of z is: {z}");
+	// z = 10.0;
+	// println!("The value of z is: {z}");
 
-	// booleans
-	let z: bool = true;
-	println!("The value of z is: {z}");
+	// // booleans
+	// let z: bool = true;
+	// println!("The value of z is: {z}");
 
-	// characters
-	let a: char = 'a';
-	println!("The value of a is: {a}");
+	// // characters
+	// let a: char = 'a';
+	// println!("The value of a is: {a}");
 
 	// strings
-	let b: &str = "hello";
+	let mut b: &str = "hello";
+	println!("The value of b is: {b}");
+	
+	b = "Something Else";
 	println!("The value of b is: {b}");
 
-	let c: String = "hello".to_string();
+	let mut c: String = "hello".to_string();
+	println!("The value of c is: {c}");
+	
+	c = "This is a string...!".to_string();
 	println!("The value of c is: {c}");
 
 	let d = "hello".to_string();
@@ -182,33 +188,33 @@ fn main() {
 	let e = String::from("hello");
 	println!("The value of e is: {e}");
 
-	// arrays
-	let c: [i32; 5] = [1, 2, 3, 4, 5];
-	println!("The value of c is: {:?}", c);
+	// // arrays
+	// let c: [i32; 5] = [1, 2, 3, 4, 5];
+	// println!("The value of c is: {:?}", c);
 
-	let d: [i32; 5] = [1, 2, 3, 4, 5];	
-	println!("The value of d is: {:?}", d);
-	let mut new_array = [0; 6];
-	new_array[..5].copy_from_slice(&d);
-	new_array[5] = 6;
-	println!("The value of new_array is: {:?}", new_array);
+	// let d: [i32; 5] = [1, 2, 3, 4, 5];	
+	// println!("The value of d is: {:?}", d);
+	// let mut new_array = [0; 6];
+	// new_array[..5].copy_from_slice(&d);
+	// new_array[5] = 6;
+	// println!("The value of new_array is: {:?}", new_array);
 
-	// tuples
-	let d: (i32, f64, bool) = (1, 3.14, true);
-	println!("The value of d is: {:?}", d);
+	// // tuples
+	// let d: (i32, f64, bool) = (1, 3.14, true);
+	// println!("The value of d is: {:?}", d);
 
-	let mut e: (i32, f64, bool) = (1, 3.14, true);
-	println!("The value of e is: {:?}", e);
-	e.0 = 10;
-	println!("The value of e is: {:?}", e);
+	// let mut e: (i32, f64, bool) = (1, 3.14, true);
+	// println!("The value of e is: {:?}", e);
+	// e.0 = 10;
+	// println!("The value of e is: {:?}", e);
 
-	// String Slices
-	let e: &str = "hello";
-	println!("The value of e is: {e}");
+	// // String Slices
+	// let e: &str = "hello";
+	// println!("The value of e is: {e}");
 
-	let mut f: &str = "hello";
-	println!("The value of f is: {f}");
-	f = "world";
-	println!("The value of f is: {f}");
+	// let mut f: &str = "hello";
+	// println!("The value of f is: {f}");
+	// f = "world";
+	// println!("The value of f is: {f}");
 
 }

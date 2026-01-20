@@ -33,6 +33,6 @@ fn divide(a: i32, b: i32) -> Result<i32, MathError> {
 fn main() {
 	match divide(10, 0) {
 		Ok(result) => println!("Result: {}", result),
-		Err(e) => println!("Error: {}", e),
+		Err(e) => println!("Error: {:?}", e),
 	}
 }

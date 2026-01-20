@@ -22,7 +22,7 @@ use serde::Serialize;
 
 // Defining a struct with Serialize trait
 #[derive(Serialize)]
-#[allow(dead_code)]
+// #[allow(dead_code)]
 struct Person {
 	name: String,
 	age: u8,
@@ -30,7 +30,7 @@ struct Person {
 	weight: f32,
 }
 
-#[allow(dead_code)]
+// #[allow(dead_code)]
 fn main() {
 	// Creating an instance of the Person struct
 	let person = Person {

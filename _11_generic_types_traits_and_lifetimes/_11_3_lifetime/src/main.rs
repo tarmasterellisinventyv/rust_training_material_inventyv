@@ -9,7 +9,12 @@
 		- Multiple references with different lifetimes: You can have multiple references with different lifetimes, but the compiler ensures they don’t overlap in ways that would cause errors.
 */
 
+
 // Basic Lifetime example
+	// Explanation:
+		// The function longest takes two string slices (&str) and returns the longest one.
+		// The 'a lifetime annotation ensures that the returned reference lives as long as the shortest of the two references.
+		// Without this explicit annotation, Rust wouldn't know how long the returned reference should be valid.
 fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 	if x.len() > y.len() {
 		x
@@ -20,6 +25,9 @@ fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
 
 
 // Lifetime Elision Rule
+	// Explanation:
+		// This function finds the first word of a string and returns a slice.
+		// Lifetime Elision Rule: Rust infers lifetimes automatically, meaning the function is treated as:
 fn first_word(s: &str) -> &str {
 	let bytes = s.as_bytes();
 	for (i, &item) in bytes.iter().enumerate() {
@@ -32,26 +40,44 @@ fn first_word(s: &str) -> &str {
 
 
 // Structs with Lifetimes
+	// Explanation:
+		// If a struct contains references, lifetime annotations are required to ensure the references remain valid.
+		// The 'a annotation guarantees that the reference inside the struct does not outlive the data it refers to.
 struct ImportantExcerpt<'a> {
 	part: &'a str,
 }
 
 
 // Lifetime in Methods
+	// Explanation:
+	// 	Methods on a struct automatically inherit the struct’s lifetime ('a).
+	// 	The function level does not return any reference, so it does not require additional lifetimes
 impl<'a> ImportantExcerpt<'a> {
 	fn level(&self) -> i32 {
 		3
 	}
+
+	// Returning a reference with the same lifetime
+    fn announce_and_return_part(&self, announcement: &str) -> &str {
+        println!("Attention please: {}", announcement);
+        self.part
+    }
 }
 
 
 // The 'static Lifetime
+	// Explanation:
+		// 'static lifetime means "lives for the entire duration of the program".
+		// String literals ("...") have a static lifetime because they are stored in the binary and exist throughout execution.
 fn static_str() -> &'static str {
 	"I have a static lifetime."
 }
 
 
-// Multiple Lifetimes in Function Signatures
+// Multiple Lifetimes in Function Signatures - Dangling References
+	// Explanation:
+		// The function takes two string slices and returns a reference to a string slice.
+		// The lifetimes of the two string slices are different, so the function returns a reference with a lifetime that is different from the input lifetimes.
 fn longests<'a, 'b>(x: &'a str, y: &'b str) -> &'a str
 where
 	'b: 'a,  // This ensures that 'b' outlives 'a'
@@ -66,6 +92,9 @@ where
 
 
 // Combining Lifetimes with Generics
+	// Explanation:
+		// The function can accept a reference to any type (T) that implements Display.
+		// The lifetime annotation 'a ensures item is valid as long as needed.
 fn print_with_lifetime<'a, T>(item: &'a T)
 where
 	T: std::fmt::Display,

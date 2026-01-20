@@ -1,4 +1,4 @@
-mod math_utils;  // Declare the `math_utils` module, located in the `math_utils` directory
+mod math_utils::arithmetic::add;  // Declare the `math_utils` module, located in the `math_utils` directory
 
 fn main() {
 	let sum = math_utils::arithmetic::add(2, 3);

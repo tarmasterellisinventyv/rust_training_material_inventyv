@@ -11,4 +11,5 @@ fn main() {
 	println!("Hello, world!");
 	println!("The sum of 2 and 3 is: {}", add(2, 3));
 	println!("The subtraction of 3 and 2 is: {}", subtract(3, 2));
+
 }

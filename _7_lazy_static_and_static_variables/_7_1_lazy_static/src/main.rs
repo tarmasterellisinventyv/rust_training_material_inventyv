@@ -22,6 +22,9 @@ lazy_static! {
 }
 
 fn main() {
+
+
+
 	// Lock the mutex to access the counter safely
 	{
 		let mut counter = COUNTER.lock().unwrap(); // Lock the mutex

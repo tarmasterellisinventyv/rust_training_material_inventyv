@@ -54,7 +54,7 @@ use std::collections::HashSet;
 use std::hash::Hash;
 
 fn main() {
-	hashmaps();
+	// hashmaps();
 	hashsets();
 }
 
@@ -88,7 +88,6 @@ fn hashmaps() {
 	for (key, value) in &scores {
 		println!("{}: {}", key, value);
 	}
-
 
 
 	// Default Types
@@ -196,7 +195,7 @@ fn hashsets() {
 
 
 	// Iterators
-	let values = vec![1, 2, 3, 4, 4, 5]; // Duplicate 4
+	let values = vec![1, 2, 3, 4, 4, 5, 5 , 6, 7, 6, 7]; // Duplicate 4
     let set: HashSet<_> = values.into_iter().collect(); // Duplicates will be removed
 
     for value in &set {

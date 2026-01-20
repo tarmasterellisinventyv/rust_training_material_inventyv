@@ -45,53 +45,55 @@
 */
 
 fn main() {
-	let s1 = String::from("Hello");  // s1 owns the string "Hello"
-	let s2 = s1;  // Ownership is transferred to s2, s1 is no longer valid
+	// let s1 = String::from("Hello");  // s1 owns the string "Hello"
+	// let s2 = s1;  // Ownership is transferred to s2, s1 is no longer valid
 
-	// println!("{}", s1);  // This would cause a compile error: "value borrowed here after move"
-	println!("{}", s2);  // s2 is now the owner of the string
+	// // println!("{}", s1);  // This would cause a compile error: "value borrowed here after move"
+	// println!("{}", s2);  // s2 is now the owner of the string
+	
+	// let s1 = String::from("Hello");
+	// let s2 = s1.clone();  // Creates a deep copy of the string
 
-	let s1 = String::from("Hello");
-	let s2 = s1.clone();  // Creates a deep copy of the string
+	// println!("s1: {}, s2: {}", s1, s2);  // Both s1 and s2 are valid
 
-	println!("s1: {}, s2: {}", s1, s2);  // Both s1 and s2 are valid
+	// let s = String::from("Hello");
 
-	let s = String::from("Hello");
+	// let len = calculate_length(&s);  // Borrow s as immutable reference
 
-	let len = calculate_length(&s);  // Borrow s as immutable reference
+	// println!("The length of '{}' is {}", s, len);  // s is still valid here
 
-	println!("The length of '{}' is {}", s, len);  // s is still valid here
+	// let mut s = String::from("Hello");
 
-	let mut s = String::from("Hello");
+	// println!(change(&mut s));  // s is no longer valid here
 
-	change(&mut s);  // Borrow s as mutable reference
+	// println!("{}", s);  // s is still valid, but its value has been changed
 
-	println!("{}", s);  // s is still valid, but its value has been changed
-
-	let s = String::from("Hello");
-
-	let r1 = &s;  // Immutable borrow
-	let r2 = &s;  // Immutable borrow
+	// let mut s = String::from("Hello");
+	
+	// let r1 = &s;  // Immutable borrow
+	// let r2 = &s;  // Immutable borrow
 	// let r3 = &mut s;  // Mutable borrow - causes an error
-
-	println!("{}, and {}", r1, r2);  // 
+	
+	// println!("{}, and {}", r1, r3);  // 
 	// println!("{}, {}, and {}", r1, r2, r3);  // Error: cannot borrow `s` as mutable because it's already borrowed immutably
 
-	// let r;
+	let r;
 
-	// {
-	// 	let x = 5;
-	// 	r = &x;  // r tries to borrow x, but x will be dropped at the end of this inner scope
-	// }
+	{
+		let x = 5;
+		r = &x;  // r tries to borrow x, but x will be dropped at the end of this inner scope
+		// println!("{}", r);  // Error: r is invalid because x is dropped
+	}
 
-	// println!("{}", r);  // Error: r is invalid because x is dropped
+	println!("{}", r);  // Error: r is invalid because x is dropped
 
 }
 
-fn calculate_length(s: &String) -> usize {
-	s.len()  // We are borrowing s, not taking ownership
-}
+// fn calculate_length(s: &String) -> usize {
+// 	s.len()  // We are borrowing s, not taking ownership
+// }
 
-fn change(s: &mut String) {
-	s.push_str(", world!");  // Mutate the borrowed value
-}
+// fn change(s: &mut String) {
+// 	s.push_str(", world!");  // Mutate the borrowed value
+// 	println!("{}", s);  // s is still valid here
+// }
